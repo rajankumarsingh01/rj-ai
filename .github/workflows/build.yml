@@ -5,13 +5,14 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     strategy:
       matrix:
         os: [windows-latest]
-        # macOS/Linux chahiye ho toh yahan add karo:
-        # os: [windows-latest, macos-latest, ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
 
