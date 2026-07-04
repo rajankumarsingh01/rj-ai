@@ -1,0 +1,138 @@
+.left-panel-title {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+  margin-bottom: 4px;
+}
+
+.stat-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeInUp 0.35s ease both;
+  transition: border-color 0.2s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--border-strong);
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+  line-height: 1;
+}
+
+.stat-value-sm {
+  font-size: 15px;
+}
+
+/* Progress bar */
+.stat-bar-track {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  box-shadow: 0 0 8px var(--accent-glow);
+  transition: width 0.5s ease;
+}
+
+.stat-bar-fill.temp-gradient {
+  background: linear-gradient(90deg, #00e5ff, #ffd400 55%, #ff3860 90%);
+  box-shadow: 0 0 8px rgba(255, 184, 0, 0.4);
+}
+
+/* Mini sparkline (fake wave under CPU) */
+.stat-sparkline {
+  width: 90px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+/* Power status pill */
+.power-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--success);
+  letter-spacing: 1px;
+}
+.power-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Environment widget */
+.env-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  animation: fadeInUp 0.4s ease both;
+}
+
+.env-icon {
+  font-size: 26px;
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+.env-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.env-city {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.env-temp {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.env-condition {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}

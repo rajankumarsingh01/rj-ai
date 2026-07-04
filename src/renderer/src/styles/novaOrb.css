@@ -1,0 +1,107 @@
+.orb-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orb-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.orb-label {
+  position: absolute;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 4px;
+  color: #eafffe;
+  text-shadow: 0 0 12px var(--accent), 0 0 24px var(--accent-glow);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Dashed rotating rings */
+.ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  opacity: 0.5;
+  transform-origin: 150px 150px;
+}
+
+.ring-a { stroke-dasharray: 40 18 8 18; animation: spin 22s linear infinite; opacity: 0.35; }
+.ring-b { stroke-dasharray: 4 10; animation: spin 14s linear infinite reverse; opacity: 0.55; }
+.ring-c { stroke-dasharray: 60 6 20 6 10 6; animation: spin 30s linear infinite; opacity: 0.4; }
+.ring-d { stroke-dasharray: 2 6; animation: spin 9s linear infinite reverse; opacity: 0.6; }
+
+.ring-static {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.orbit-dots {
+  transform-origin: 150px 150px;
+  animation: spin 6s linear infinite;
+}
+.orbit-dots-rev {
+  animation: spin 8s linear infinite reverse;
+}
+.dot {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+
+.core {
+  filter: drop-shadow(0 0 20px var(--accent-glow));
+  animation: coreBreathe 3s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes coreBreathe {
+  0%, 100% { r: 48; filter: drop-shadow(0 0 18px var(--accent-glow)); }
+  50% { r: 51; filter: drop-shadow(0 0 32px var(--accent-glow)); }
+}
+
+/* ===== State variants ===== */
+
+/* Listening: faster spin + pulse rings from core */
+.orb-listening .ring-a,
+.orb-listening .ring-c { animation-duration: 8s; }
+.orb-listening .ring-b,
+.orb-listening .ring-d { animation-duration: 5s; }
+.orb-listening .core { animation-duration: 1s; }
+
+.orb-listening::before,
+.orb-listening::after {
+  content: '';
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  animation: pulseOut 1.6s ease-out infinite;
+}
+.orb-listening::after { animation-delay: 0.6s; }
+
+@keyframes pulseOut {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Speaking: green-cyan shift + fast core pulse */
+.orb-speaking .core { animation-duration: 0.5s; }
+.orb-speaking .orb-label { text-shadow: 0 0 12px var(--success), 0 0 24px var(--success); }
+
+/* Thinking: rings speed up erratically-ish */
+.orb-thinking .ring-a { animation-duration: 4s; }
+.orb-thinking .ring-b { animation-duration: 3s; }
+.orb-thinking .ring-c { animation-duration: 6s; }

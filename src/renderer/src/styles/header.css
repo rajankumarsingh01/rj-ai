@@ -1,0 +1,89 @@
+.hud-header {
+  height: 52px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  -webkit-app-region: drag;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  -webkit-app-region: no-drag;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+  letter-spacing: 1px;
+}
+
+.header-brand-icon {
+  font-size: 16px;
+  animation: spin 8s linear infinite;
+  display: inline-block;
+}
+
+.speaking-indicator {
+  font-size: 11px;
+  color: var(--success);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.model-select {
+  -webkit-app-region: no-drag;
+  background: var(--bg-glass);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 5px 10px;
+  font-size: 11px;
+  font-family: var(--font);
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.model-select:hover {
+  border-color: var(--border-strong);
+}
+
+.header-right {
+  display: flex;
+  gap: 4px;
+  -webkit-app-region: no-drag;
+}
+
+.win-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s ease;
+}
+
+.win-btn:hover {
+  background: var(--bg-hover);
+}
+
+.win-btn.close-btn:hover {
+  background: rgba(255, 56, 96, 0.15);
+  color: var(--danger);
+}

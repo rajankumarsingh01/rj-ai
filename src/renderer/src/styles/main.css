@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap');
+
+:root {
+  --bg-primary: #050508;
+  --bg-secondary: #0a0c12;
+  --bg-panel: rgba(8, 14, 22, 0.7);
+  --bg-active: rgba(0, 229, 255, 0.06);
+  --bg-hover: rgba(0, 229, 255, 0.1);
+  --bg-glass: rgba(8, 12, 20, 0.65);
+
+  --border: rgba(0, 229, 255, 0.15);
+  --border-strong: rgba(0, 229, 255, 0.4);
+
+  --text-primary: #e8f9ff;
+  --text-secondary: #7fa8b8;
+  --text-muted: #4a6472;
+
+  --accent: #00e5ff;
+  --accent-hover: #33ebff;
+  --accent-light: rgba(0, 229, 255, 0.12);
+  --accent-glow: rgba(0, 229, 255, 0.5);
+  --accent-secondary: #7c5cff;
+
+  --success: #00ff9d;
+  --danger: #ff3860;
+  --warning: #ffb800;
+
+  --user-bubble: linear-gradient(135deg, rgba(0,229,255,0.18), rgba(0,180,255,0.1));
+  --ai-bubble: rgba(0, 229, 255, 0.04);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-glow: 0 0 30px var(--accent-glow);
+  --font: 'Rajdhani', 'Segoe UI', sans-serif;
+  --font-display: 'Orbitron', 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+  letter-spacing: 0.3px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+}
+
+.app::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 80%);
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--border);
+}
+
+.glass-strong {
+  background: rgba(8, 12, 20, 0.9);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--border-strong);
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+@keyframes bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeScaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px 0 var(--accent-glow); }
+  50% { box-shadow: 0 0 40px 8px var(--accent-glow); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.btn {
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.18s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+  color: #001015;
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+.btn-primary:hover { box-shadow: 0 0 24px var(--accent-glow); transform: translateY(-1px); }
+.btn-primary:disabled { background: var(--bg-hover); color: var(--text-muted); box-shadow: none; cursor: not-allowed; }
+
+.btn-icon {
+  background: none;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+  transition: all 0.15s ease;
+}
+.btn-icon:hover { background: var(--bg-hover); color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 4, 8, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeScaleIn 0.15s ease;
+}
+
+/* Section label style used across HUD panels */
+.hud-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent-glow);
+}

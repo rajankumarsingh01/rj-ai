@@ -1,0 +1,58 @@
+.center-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.orb-dock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.orb-subtitle {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  animation: fadeInUp 0.4s ease 0.2s both;
+}
+
+.chat-messages-area {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 0;
+}
+
+/* ===== Empty state: big orb takes most space, message area collapsed ===== */
+.stage-empty .orb-dock {
+  flex: 1;
+}
+
+.stage-empty .chat-messages-area {
+  flex: 0;
+  height: 0;
+  opacity: 0;
+}
+
+/* ===== Chat active: orb docks small at top, messages fill the rest ===== */
+.stage-chat .orb-dock {
+  flex: 0 0 auto;
+  padding: 16px 0 8px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(0,229,255,0.03), transparent);
+}
+
+.stage-chat .chat-messages-area {
+  flex: 1;
+  opacity: 1;
+  min-height: 0;
+}
