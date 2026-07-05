@@ -1,4 +1,4 @@
-# ✦ RJ AI — Your Personal Desktop Assistant
+# ✦ Atlas AI — Your Personal Desktop Assistant
 
 RJ is a futuristic, voice-activated AI assistant that lives on your desktop. Built with Electron and React, RJ combines conversational AI, real voice interaction, document intelligence, and full desktop control into one sleek HUD-style interface — inspired by sci-fi assistants like JARVIS.
 
@@ -17,8 +17,8 @@ RJ is a futuristic, voice-activated AI assistant that lives on your desktop. Bui
 - Persistent chat sessions with auto-generated titles
 
 ### 🎙️ Voice Interaction
-- **Wake word detection** — say "Hey RJ" to activate hands-free
-- **Voice Activity Detection (VAD)** — no fixed recording windows, RJ listens until you stop talking
+- **Wake word detection** — say "Hey Atlas" to activate hands-free
+- **Voice Activity Detection (VAD)** — no fixed recording windows, Atlas listens until you stop talking
 - **Speech-to-text** powered by Groq Whisper
 - **Fluent text-to-speech** powered by ElevenLabs (with automatic fallback to Google TTS if unavailable)
 - Multiple voice personalities to choose from (Adam, Daniel, Arnold, Rachel, and more)
@@ -29,7 +29,7 @@ RJ is a futuristic, voice-activated AI assistant that lives on your desktop. Bui
 - Automatic chunking and keyword-based retrieval
 
 ### 🧩 Memory
-- RJ remembers facts about you across sessions
+- Atlas remembers facts about you across sessions
 - Auto-saves important information during conversation
 - Manage (view/delete) memories anytime from Settings
 
@@ -111,7 +111,7 @@ npm run dev
 
 ### API Keys
 
-RJ needs at least one API key to function fully. Once the app is running:
+Atlas needs at least one API key to function fully. Once the app is running:
 
 1. Open **Settings (⚙)** → **General tab**
 2. Paste your keys for:
