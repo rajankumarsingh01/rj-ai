@@ -38,10 +38,12 @@ contextBridge.exposeInMainWorld('nova', {
     query: (term) => ipcRenderer.invoke('search:query', term)
   },
 
-  window: {
+ window: {
     minimize: () => ipcRenderer.send('window:minimize'),
     maximize: () => ipcRenderer.send('window:maximize'),
-    close: () => ipcRenderer.send('window:close')
+    close: () => ipcRenderer.send('window:close'),
+    togglePopup: () => ipcRenderer.invoke('window:togglePopup'),
+    closePopup: () => ipcRenderer.invoke('window:closePopup')
   },
 
   rag: {

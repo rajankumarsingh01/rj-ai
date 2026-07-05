@@ -26,7 +26,7 @@ export default function ActionConfirmModal() {
       <div className={`confirm-card glass-strong ${meta.danger ? 'confirm-danger' : ''}`}>
         <div className="confirm-icon">{meta.icon}</div>
         <h3 className="confirm-title">{meta.title}</h3>
-        <p className="confirm-body">Aria {meta.verb} karna chahti hai:</p>
+        <p className="confirm-body">Atlas {meta.verb} karna chahti hai:</p>
 
         {value && <div className="confirm-value">{value.replace('|', '  →  ')}</div>}
 

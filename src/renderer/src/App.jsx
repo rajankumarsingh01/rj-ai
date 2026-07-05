@@ -1,9 +1,9 @@
-// src/renderer/src/App.jsx
 import './styles/main.css'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import HUDLayout from './components/layout/HUDLayout'
-import ActionConfirmModal from './components/ActionConfirmModel'   // 👈 add this import
+import ActionConfirmModal from './components/ActionConfirmModal'
+import ClapDetector from './components/ClapDetector'
 
 export default function App() {
   return (
@@ -13,7 +13,8 @@ export default function App() {
         <Sidebar />
         <HUDLayout />
       </div>
-      <ActionConfirmModal />   {/* 👈 add this line */}
+      <ActionConfirmModal />
+      <ClapDetector />
     </div>
   )
 }
