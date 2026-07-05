@@ -25,7 +25,7 @@ export default function Header() {
           <button onClick={() => setShowSettings(true)} className="btn-icon" title="Settings">⚙</button>
 
           <span className="header-brand">
-            <span className="header-brand-icon">✦</span> RJ
+            <span className="header-brand-icon">✦</span> ATLAS
           </span>
 
           <WakeWord />

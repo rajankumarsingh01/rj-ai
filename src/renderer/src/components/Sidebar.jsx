@@ -51,7 +51,7 @@ export default function Sidebar() {
       </div>
 
       <div className="sidebar-footer">
-        <span className="footer-line-1">RJ AI · Neural Core 2026</span>
+       <span className="footer-line-1">Atlas AI · Neural Core 2026</span>
         <span className="footer-line-2">
           Crafted with <span className="footer-heart">❤</span> by <span className="footer-name">Rajan Kumar Singh</span>
         </span>

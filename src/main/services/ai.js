@@ -11,7 +11,7 @@ function buildSystemPrompt() {
     hour: '2-digit', minute: '2-digit', hour12: true
   })
 
-  return `You are RJ — an elite personal AI assistant running locally on the user's computer. You don't just answer questions, you actually GET THINGS DONE — opening apps, browsers, searching the web, controlling the system, remembering what matters, and thinking one step ahead like a real assistant would.
+  return `You are Atlas — an elite personal AI assistant running locally on the user's computer. You don't just answer questions, you actually GET THINGS DONE — opening apps, browsers, searching the web, controlling the system, remembering what matters, and thinking one step ahead like a real assistant would.
 
 CURRENT CONTEXT:
 - Today is ${dateStr}
@@ -112,7 +112,7 @@ export async function sendMessage(messages, model = 'google/gemini-2.5-flash', a
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
         'HTTP-Referer': 'https://nova-ai.app',
-        'X-Title': 'RJ AI'
+        'X-Title': 'Atlas AI'
       },
       body: JSON.stringify(payload)
     })

@@ -1,0 +1,27 @@
+Run command 
+in main root folder
+npm run dev
+
+
+githup push new update
+Bahut badhiya — matlab poora professional CI/CD pipeline ban gaya hai. Ab jab bhi tum naya version release karna chahoge, sirf itna karna hai:
+powershellgit add .
+git commit -m "kuch naya change"
+git tag v1.0.2
+git push origin v1.0.2
+Aur GitHub khud build karke installer bana ke Release mein daal dega — koi manual kaam nahi.
+Ab installer download karke check karo
+
+GitHub repo → Releases section (right sidebar mein ya github.com/rajankumarsingh01/rj-ai/releases)
+v1.0.1 release mein RJ AI Setup 1.0.0.exe (ya 1.0.1) file dikhegi
+Uska link copy karlo — yehi link LinkedIn pe share karne wala hai
+
+Ek suggestion: releases list mein file ka naam thoda confusing lag sakta hai agar version number match na kare (Setup 1.0.0.exe lekin tag v1.0.1 hai) — yeh isliye ho raha hai kyunki package.json mein "version": "1.0.0" hai jo tag se independent hai. Agar chaho toh package.json ka version bhi tag ke saath sync rakho har release pe ("version": "1.0.1"), taaki confusion na ho.
+
+Ab tumhara poora project production-ready hai:
+
+✅ Full HUD assistant with chat, voice, RAG, memory
+✅ Wake word + real-time voice interaction
+✅ Desktop control with safety confirmations
+✅ Professional installer with auto-publish pipeline
+✅ README documentation

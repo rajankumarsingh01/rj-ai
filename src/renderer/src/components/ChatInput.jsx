@@ -109,7 +109,7 @@ export default function ChatInput() {
                     value={input}
                     onChange={handleInput}
                     onKeyDown={handleKeyDown}
-                   placeholder="RJ se kuch bhi pucho..."
+                   placeholder="Atlas se kuch bhi pucho..."
                     rows={1}
                     style={{
                         flex: 1,

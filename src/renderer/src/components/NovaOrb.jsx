@@ -34,7 +34,7 @@ export default function NovaOrb({ state = 'idle', size = 260 }) {
         <circle className="core" cx="150" cy="150" r="48" fill="url(#coreGlow)" />
       </svg>
 
-      <span className="orb-label">RJ</span>
+      <span className="orb-label">ATLAS</span>
     </div>
   )
 }

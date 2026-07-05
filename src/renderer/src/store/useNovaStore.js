@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 const RISKY_ACTIONS = [
-  'closeAllApps', 'systemShutdown', 'systemRestart', 'systemSleep'
+  'systemShutdown', 'systemRestart', 'systemSleep'
 ]
 
 const useNovaStore = create((set, get) => ({
@@ -69,6 +69,53 @@ const useNovaStore = create((set, get) => ({
     const { pendingConfirmation } = get()
     if (pendingConfirmation) pendingConfirmation.resolve(allowed)
     set({ pendingConfirmation: null })
+  },
+
+  // ─── Speak (shared by chat + wake word) ─────────
+  speak: async (text) => {
+    return new Promise(async (resolve) => {
+      const currentState = get()
+      if (!currentState.ttsEnabled) {
+        resolve()
+        return
+      }
+      try {
+        set({ isSpeaking: true })
+        const ttsResult = await window.nova.tts.speak(text, currentState.selectedVoice)
+
+        if (ttsResult.success && ttsResult.audioData) {
+          const audioUrl = `data:${ttsResult.mimeType};base64,${ttsResult.audioData}`
+          const audio = new Audio()
+          set({ activeAudio: audio })
+
+          audio.onended = () => {
+            set({ isSpeaking: false, activeAudio: null })
+            resolve()
+          }
+          audio.onerror = (e) => {
+            console.error('Audio play error:', e)
+            set({ isSpeaking: false, activeAudio: null })
+            resolve()
+          }
+
+          audio.src = audioUrl
+          try {
+            await audio.play()
+          } catch (playErr) {
+            console.error('Play() rejected:', playErr)
+            set({ isSpeaking: false, activeAudio: null })
+            resolve()
+          }
+        } else {
+          set({ isSpeaking: false })
+          resolve()
+        }
+      } catch (err) {
+        console.error('speak() error:', err)
+        set({ isSpeaking: false })
+        resolve()
+      }
+    })
   },
 
   // ─── Actions ────────────────────────────────────
@@ -235,42 +282,7 @@ const useNovaStore = create((set, get) => ({
       await get().loadConversations()
     }
 
-    const currentState = get()
-    if (currentState.ttsEnabled) {
-      try {
-        set({ isSpeaking: true })
-        const ttsResult = await window.nova.tts.speak(assistantContent, currentState.selectedVoice)
-
-        if (ttsResult.success && ttsResult.audioData) {
-          const audioUrl = `data:${ttsResult.mimeType};base64,${ttsResult.audioData}`
-          const audio = new Audio()
-          set({ activeAudio: audio })
-
-          audio.onended = () => set({ isSpeaking: false, activeAudio: null })
-          audio.onerror = (e) => {
-            console.error('Audio play error:', e)
-            set({ isSpeaking: false, activeAudio: null })
-            const utterance = new SpeechSynthesisUtterance(assistantContent)
-            utterance.lang = 'en-US'
-            utterance.onend = () => set({ isSpeaking: false })
-            window.speechSynthesis.speak(utterance)
-          }
-
-          audio.src = audioUrl
-          try {
-            await audio.play()
-          } catch (playErr) {
-            console.error('Play() rejected:', playErr)
-            audio.onerror(playErr)
-          }
-        } else {
-          set({ isSpeaking: false })
-        }
-      } catch (err) {
-        console.error('TTS block error:', err)
-        set({ isSpeaking: false })
-      }
-    }
+    await get().speak(assistantContent)
 
     return assistantContent
   }

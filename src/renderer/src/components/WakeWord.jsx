@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import useNovaStore from '../store/useNovaStore'
 
-const WAKE_WORDS = ['hey rj', 'hey r j', 'hey are jay', 'hey argy', 'rj', 'r j', 'are jay']
+const WAKE_WORDS = ['hey atlas', 'atlas', 'hey atlas!', ' hey, atlas']
 const SILENCE_THRESHOLD = 0.015
 const SILENCE_DURATION = 900
 const MIN_SPEECH_DURATION = 300
@@ -79,8 +79,8 @@ export default function WakeWord() {
       const cleanup = () => {
         cancelAnimationFrame(rafId)
         clearTimeout(hardStopTimer)
-        try { source.disconnect() } catch {}
-        audioCtx.close().catch(() => {})
+        try { source.disconnect() } catch { }
+        audioCtx.close().catch(() => { })
       }
 
       const tick = () => {
@@ -138,8 +138,7 @@ export default function WakeWord() {
       if (!detected || !isActiveRef.current) continue
 
       setStatus('awake 👂')
-      await window.nova.tts.speak('Haan boss, boliye', selectedVoice)
-      await waitForSpeakingToEnd()
+      await useNovaStore.getState().speak('Haan boss, boliye')
       if (!isActiveRef.current) break
 
       setIsListening(true)

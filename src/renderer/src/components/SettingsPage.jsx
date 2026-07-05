@@ -809,7 +809,7 @@ export default function SettingsPage({ onClose }) {
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: '28px',
                 }}>✦</div>
-                <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text-primary)' }}>RJ AI</h2>
+                <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--text-primary)' }}>Atlas AI</h2>
                 <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Version 1.0.0 — 2026</p>
                 <div style={{
                   width: '100%',
